@@ -8,6 +8,14 @@ namespace FortuneTeller
 {
     class Program
     {
+        static void Quitter(string quitRestart)
+        {
+            if (quitRestart.ToUpper() == "QUIT")
+            {
+                Console.WriteLine("Nobody likes a quitter...");
+                
+            }
+        }
         static void Main(string[] args)
         {
             //assigning a variable
@@ -20,18 +28,26 @@ namespace FortuneTeller
                 //First collect all the super important personal info
                 Console.WriteLine("What is your first name");
                 string fName = Console.ReadLine();
+                string quitRestart = fName;
+                Quitter(quitRestart);
                 Console.Clear();
                 Console.WriteLine("What is your last name");
                 string lName = Console.ReadLine();
+                quitRestart = lName;
+                Quitter(quitRestart);
                 Console.Clear();
-                int age = -1;
-                while (age == -1)
+                string age;
+                int iAge = -1;
+                do
                 {
                     Console.WriteLine("How old are you?");
                     // what if they don't give a number?
                     try
                     {
-                        age = int.Parse(Console.ReadLine());
+                        age = (Console.ReadLine());
+                        quitRestart = age;
+                        Quitter(quitRestart);
+                        iAge = int.Parse(age);
                     }
                     catch (Exception e)
 
@@ -39,33 +55,50 @@ namespace FortuneTeller
                         Console.WriteLine("That is not a valid number.");
                     }
                 }
+                while (iAge == -1);
                 Console.Clear();
                 Console.WriteLine("What month were you born?");
                 string bMonth = Console.ReadLine();
+                quitRestart = bMonth;
+                Quitter(quitRestart);
                 Console.Clear();
                 //What if they don't know Roy?
-                string fColor;
-                Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
-                fColor = Console.ReadLine();
-                Console.Clear();
-                while (fColor.ToUpper() == "HELP")
-                {
-                    Console.WriteLine("ROYGBIV is an acronym for the colors of the rainbow.");
-                    Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
-                    Console.WriteLine("So, which is your favorite?");
+                string fColor="Nothing";
+                //do
+                //{
+                    Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
                     fColor = Console.ReadLine();
+                    fColor = fColor.ToUpper();
+                quitRestart = fColor;
+                Quitter(quitRestart);
+                Console.Clear();
+                    while (fColor.ToUpper() == "HELP")
+                    {
+                        Console.WriteLine("ROYGBIV is an acronym for the colors of the rainbow.");
+                        Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
+                        Console.WriteLine("So, which is your favorite?");
+                        fColor = Console.ReadLine();
+                        fColor = fColor.ToUpper();
+                    quitRestart = fColor;
+                    Quitter(quitRestart);
                     Console.Clear();
+                    }
                     //Catch non valid input??
-                    
-                }
+
+                //}
+                //while (fColor[0] != 'R' || fColor[0] != 'O' || fColor[0] != 'Y' || fColor[0] != 'G' || fColor[0] != 'B' || fColor[0] != 'I' || fColor[0] != 'V');
                 //Now they know Roy.
                 int numSibs = -1;
+                string snumSibs;
                 while (numSibs == -1)
                 {
                     try
                     {
                         Console.WriteLine("How many siblings do you have?");
-                        numSibs = int.Parse(Console.ReadLine());
+                        snumSibs = Console.ReadLine();
+                        quitRestart = snumSibs;
+                        Quitter(quitRestart);
+                        numSibs = int.Parse(snumSibs);
                         Console.Clear();
                     }
                     catch (Exception e2)
@@ -76,7 +109,7 @@ namespace FortuneTeller
 
                 //how long til they retire
                 int retireAge;
-                if (age % 2 == 0)
+                if (iAge % 2 == 0)
                 {
                     retireAge = 20;
                 }
@@ -108,7 +141,7 @@ namespace FortuneTeller
                 }
 
                 //What will the retiree be driving?
-                fColor = fColor.ToUpper();
+                //fColor = fColor.ToUpper();
                 switch (fColor[0])
                 {
                     case 'R':
@@ -124,13 +157,17 @@ namespace FortuneTeller
                         fColor = "X-Wing";
                         break;
                     case 'B':
-                        fColor = "Rickshaw";
+                        fColor = "Airship";
                         break;
                     case 'I':
                         fColor = "Starship Enterprise";
                         break;
                     case 'V':
                         fColor = "Lion of Voltron";
+                        break;
+                    // You don't follow rules? Have a Rickshaw.
+                    default:
+                        fColor = "Rickshaw";
                         break;
 
                 }
