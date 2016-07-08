@@ -8,119 +8,160 @@ namespace FortuneTeller
 {
     class Program
     {
-        static void Restart()
-        {
-            
-        }
-        static void Quitter(string quitRestart)
+        
+        static int Quitter(string quitRestart)
         {
             if (quitRestart.ToUpper() == "QUIT")
             {
                 Console.WriteLine("Nobody likes a quitter...");
                 Environment.Exit(0);
+                return 0;
             }
             else if (quitRestart.ToUpper() == "RESTART")
             {
-                
+                return 1;            
             }
-            else
-            {
-
-            }
+            return 0;
+            
         }
         static void Main(string[] args)
         {
             //assigning a variable
             int retWith=0;
             //let them play again
+            //need some variables
+            string bMonth;
+            string fName;
+            string lName;
             string playAgain;
+            string quitRestart;
+            int restartcheck2;
             do
-               
             {
+                restartcheck2 = 0;
                 //First collect all the super important personal info
-                Console.WriteLine("What is your first name");
-                string fName = Console.ReadLine();
-                string quitRestart = fName;
-                Quitter(quitRestart);
-                Console.Clear();
-                Console.WriteLine("What is your last name");
-                string lName = Console.ReadLine();
-                quitRestart = lName;
-                Quitter(quitRestart);
-                Console.Clear();
+                if (restartcheck2 == 0)
+                {
+                    Console.WriteLine("What is your first name");
+                    fName = Console.ReadLine();
+                    quitRestart = fName;
+                    restartcheck2 = Quitter(quitRestart);
+                    Console.Clear();
+                }
+                else
+                {
+                    fName = "null";
+                }
+                if (restartcheck2 == 0)
+                {
+                    Console.WriteLine("What is your last name");
+                    lName = Console.ReadLine();
+                    quitRestart = lName;
+                    restartcheck2 = Quitter(quitRestart);
+                    Console.Clear();
+                }
+                else
+                {
+                    lName = "null";
+                }
                 string age;
                 int iAge = -1;
-                do
+                if (restartcheck2 == 0)
                 {
-                    Console.WriteLine("How old are you?");
-                    // what if they don't give a number?
-                    try
-                    {
-                        age = (Console.ReadLine());
-                        quitRestart = age;
-                        Quitter(quitRestart);
-                        iAge = int.Parse(age);
-                    }
-                    catch (Exception e)
 
+
+                    do
                     {
-                        Console.WriteLine("That is not a valid number.");
+                        Console.WriteLine("How old are you?");
+                        // what if they don't give a number?
+                        try
+                        {
+                            age = (Console.ReadLine());
+                            quitRestart = age;
+                            restartcheck2 = Quitter(quitRestart);
+                            if (restartcheck2 == 1)
+                            {
+                                break;
+                            }
+                            iAge = int.Parse(age);
+                        }
+                        catch (Exception e)
+
+                        {
+                            Console.WriteLine("That is not a valid number.");
+                        }
                     }
+                    while (iAge == -1);
                 }
-                while (iAge == -1);
                 Console.Clear();
-                Console.WriteLine("What month were you born?");
-                string bMonth = Console.ReadLine();
-                quitRestart = bMonth;
-                Quitter(quitRestart);
+                if (restartcheck2 == 0)
+                {
+                    Console.WriteLine("What month were you born?");
+                    bMonth = Console.ReadLine();
+                    quitRestart = bMonth;
+                    restartcheck2 = Quitter(quitRestart);
+                }
+                else
+                {
+                    bMonth = "null";
+                }
                 Console.Clear();
                 //What if they don't know Roy?
                 string fColor="Nothing";
                 string colorCheck = "ROYGBIV";
                 int z = -1;
-                do
+                if (restartcheck2 == 0)
                 {
-                    Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
-                    fColor = Console.ReadLine();
-                    fColor = fColor.ToUpper();
-                quitRestart = fColor;
-                Quitter(quitRestart);
-                Console.Clear();
-                    while (fColor.ToUpper() == "HELP")
+                    do
                     {
-                        Console.WriteLine("ROYGBIV is an acronym for the colors of the rainbow.");
-                        Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
-                        Console.WriteLine("So, which is your favorite?");
+                        Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
                         fColor = Console.ReadLine();
                         fColor = fColor.ToUpper();
-                    quitRestart = fColor;
-                    Quitter(quitRestart);
-                    Console.Clear();
+                        quitRestart = fColor;
+                        restartcheck2 = Quitter(quitRestart);
+                        Console.Clear();
+                        while (fColor.ToUpper() == "HELP")
+                        {
+                            Console.WriteLine("ROYGBIV is an acronym for the colors of the rainbow.");
+                            Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
+                            Console.WriteLine("So, which is your favorite?");
+                            fColor = Console.ReadLine();
+                            fColor = fColor.ToUpper();
+                            quitRestart = fColor;
+                            restartcheck2 = Quitter(quitRestart);
+                            Console.Clear();
+                        }
+                        //Catch non valid input??
+                        z = colorCheck.IndexOf(fColor[0]);
                     }
-                    //Catch non valid input??
-                    z = colorCheck.IndexOf(fColor[0]);
+                    while (z < 0);
                 }
-                while (z < 0);
                 //Now they know Roy.
                 int numSibs = -1;
                 string snumSibs;
-                while (numSibs == -1)
+                if (restartcheck2 == 0)
                 {
-                    try
+                    while (numSibs == -1)
                     {
-                        Console.WriteLine("How many siblings do you have?");
-                        snumSibs = Console.ReadLine();
-                        quitRestart = snumSibs;
-                        Quitter(quitRestart);
-                        numSibs = int.Parse(snumSibs);
-                        Console.Clear();
-                    }
-                    catch (Exception e2)
-                    {
-                        Console.WriteLine("Please give a numerical response.");
+                        try
+                        {
+                            Console.WriteLine("How many siblings do you have?");
+                            snumSibs = Console.ReadLine();
+                            quitRestart = snumSibs;
+                            restartcheck2 = Quitter(quitRestart);
+                            if (restartcheck2 == 1)
+                            {
+                                break;
+                            }
+                            numSibs = int.Parse(snumSibs);
+                            Console.Clear();
+                        }
+                        catch (Exception e2)
+                        {
+                            Console.WriteLine("Please give a numerical response.");
+                        }
                     }
                 }
-
                 //how long til they retire
                 int retireAge;
                 if (iAge % 2 == 0)
@@ -187,6 +228,7 @@ namespace FortuneTeller
                 }
                 //How much will they retire with
                 bMonth = bMonth.ToUpper();
+                
                 if ((fName.ToUpper().IndexOf(bMonth[0]) > 0) || (lName.ToUpper().IndexOf(bMonth[0]) > 0))
                 {
                     retWith = 1000000;
@@ -205,8 +247,16 @@ namespace FortuneTeller
                 }
                 Console.WriteLine($"{fName} {lName} will retire in {retireAge} years, with ${retWith} in the bank,\na vacation home in {retireLoc} and a {fColor}.");
                 Console.WriteLine();
-                Console.WriteLine("Would you like a new fortune?(YES/NO)");
-                playAgain = Console.ReadLine();
+                if (restartcheck2 == 0)
+                {
+                    Console.WriteLine("Would you like a new fortune?(YES/NO)");
+                    playAgain = Console.ReadLine();
+                }
+                else
+                {
+                    Console.Clear();
+                    playAgain = "YES";
+                }
             }
             while (playAgain.ToUpper() == "YES");
         }
