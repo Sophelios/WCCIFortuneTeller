@@ -126,7 +126,7 @@ namespace FortuneTeller
                 {
                     retWith = 61531325;
                 }
-                Console.WriteLine(fName+" "+lName+ " will retire in "+retireAge+"years"+" with "+ "$" +retWith +" in the bank,\na vacation home in "+retireLoc+" and a "+fColor+".");
+                Console.WriteLine($"{fName} {lName} will retire in {retireAge} years, with ${retWith} in the bank,\na vacation home in {retireLoc} and a {fColor}.");
                 Console.WriteLine();
                 Console.WriteLine("Would you like a new fortune?(YES/NO)");
                 playAgain = Console.ReadLine();
