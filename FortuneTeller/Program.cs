@@ -8,12 +8,24 @@ namespace FortuneTeller
 {
     class Program
     {
+        static void Restart()
+        {
+            
+        }
         static void Quitter(string quitRestart)
         {
             if (quitRestart.ToUpper() == "QUIT")
             {
                 Console.WriteLine("Nobody likes a quitter...");
                 Environment.Exit(0);
+            }
+            else if (quitRestart.ToUpper() == "RESTART")
+            {
+                
+            }
+            else
+            {
+
             }
         }
         static void Main(string[] args)
@@ -23,7 +35,7 @@ namespace FortuneTeller
             //let them play again
             string playAgain;
             do
-                
+               
             {
                 //First collect all the super important personal info
                 Console.WriteLine("What is your first name");
@@ -64,8 +76,10 @@ namespace FortuneTeller
                 Console.Clear();
                 //What if they don't know Roy?
                 string fColor="Nothing";
-                //do
-                //{
+                string colorCheck = "ROYGBIV";
+                int z = -1;
+                do
+                {
                     Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
                     fColor = Console.ReadLine();
                     fColor = fColor.ToUpper();
@@ -84,9 +98,9 @@ namespace FortuneTeller
                     Console.Clear();
                     }
                     //Catch non valid input??
-
-                //}
-                //while (fColor[0] != 'R' || fColor[0] != 'O' || fColor[0] != 'Y' || fColor[0] != 'G' || fColor[0] != 'B' || fColor[0] != 'I' || fColor[0] != 'V');
+                    z = colorCheck.IndexOf(fColor[0]);
+                }
+                while (z < 0);
                 //Now they know Roy.
                 int numSibs = -1;
                 string snumSibs;
