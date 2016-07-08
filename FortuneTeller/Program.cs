@@ -13,7 +13,7 @@ namespace FortuneTeller
             if (quitRestart.ToUpper() == "QUIT")
             {
                 Console.WriteLine("Nobody likes a quitter...");
-                
+                Environment.Exit(0);
             }
         }
         static void Main(string[] args)
