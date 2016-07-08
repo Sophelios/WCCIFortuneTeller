@@ -10,6 +10,8 @@ namespace FortuneTeller
     {
         static void Main(string[] args)
         {
+            //assigning a variable
+            int retWith=0;
             //let them play again
             string playAgain;
             do
@@ -39,6 +41,7 @@ namespace FortuneTeller
                     Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
                     Console.WriteLine("So, which is your favorite?");
                     fColor = Console.ReadLine();
+                    Console.Clear();
                 }
                 //Now they know Roy.
                 Console.WriteLine("How many siblings do you have?");
@@ -106,20 +109,26 @@ namespace FortuneTeller
 
                 }
                 //How much will they retire with
-                int retWith;
-                if ((fName.IndexOf(bMonth[0]) > 0) || (lName.IndexOf(bMonth[0]) > 0))
+                bMonth = bMonth.ToUpper();
+                if ((fName.ToUpper().IndexOf(bMonth[0]) > 0) || (lName.ToUpper().IndexOf(bMonth[0]) > 0))
                 {
                     retWith = 1000000;
                 }
-                else if ((fName.IndexOf(bMonth[1]) > 0) || (lName.IndexOf(bMonth[1]) > 0))
+                else if ((fName.ToUpper().IndexOf(bMonth[1]) > 0) || (lName.ToUpper().IndexOf(bMonth[1]) > 0))
                 {
                     retWith = 9999999;
                 }
-                else if ((fName.IndexOf(bMonth[2]) > 0) || (lName.IndexOf(bMonth[2]) > 0))
+                else if ((fName.ToUpper().IndexOf(bMonth[2]) > 0) || (lName.ToUpper().IndexOf(bMonth[2]) > 0))
                 {
                     retWith = 10;
                 }
-                Console.WriteLine("Do you want to play again?(YES/NO)");
+                else
+                {
+                    retWith = 61531325;
+                }
+                Console.WriteLine(fName+" "+lName+ " will retire in "+retireAge+"years"+" with "+ "$" +retWith +" in the bank,\na vacation home in "+retireLoc+" and a "+fColor+".");
+                Console.WriteLine();
+                Console.WriteLine("Would you like a new fortune?(YES/NO)");
                 playAgain = Console.ReadLine();
             }
             while (playAgain.ToUpper() == "YES");
