@@ -24,8 +24,21 @@ namespace FortuneTeller
                 Console.WriteLine("What is your last name");
                 string lName = Console.ReadLine();
                 Console.Clear();
-                Console.WriteLine("How old are you?");
-                int age = int.Parse(Console.ReadLine());
+                int age = -1;
+                while (age == -1)
+                {
+                    Console.WriteLine("How old are you?");
+                    // what if they don't give a number?
+                    try
+                    {
+                        age = int.Parse(Console.ReadLine());
+                    }
+                    catch (Exception e)
+
+                    {
+                        Console.WriteLine("That is not a valid number.");
+                    }
+                }
                 Console.Clear();
                 Console.WriteLine("What month were you born?");
                 string bMonth = Console.ReadLine();
@@ -42,11 +55,24 @@ namespace FortuneTeller
                     Console.WriteLine("So, which is your favorite?");
                     fColor = Console.ReadLine();
                     Console.Clear();
+                    //Catch non valid input??
+                    
                 }
                 //Now they know Roy.
-                Console.WriteLine("How many siblings do you have?");
-                int numSibs = int.Parse(Console.ReadLine());
-                Console.Clear();
+                int numSibs = -1;
+                while (numSibs == -1)
+                {
+                    try
+                    {
+                        Console.WriteLine("How many siblings do you have?");
+                        numSibs = int.Parse(Console.ReadLine());
+                        Console.Clear();
+                    }
+                    catch (Exception e2)
+                    {
+                        Console.WriteLine("Please give a numerical response.");
+                    }
+                }
 
                 //how long til they retire
                 int retireAge;
