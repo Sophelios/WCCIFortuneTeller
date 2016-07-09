@@ -42,7 +42,10 @@ namespace FortuneTeller
                 //First collect all the super important personal info
                 if (restartcheck2 == 0)
                 {
-                    Console.WriteLine("What is your first name");
+                    Console.WriteLine("Welcome to the WeCanCodeIT Fortune Teller!!");
+                    Console.WriteLine("Type (QUIT) to quit anytime. \nYou're not a quitter, are you?");
+                    Console.WriteLine("Type (RESTART) at anytime to begin again. \nIn case you don't know yourself that well.");
+                    Console.WriteLine("To start, what is your first name?");
                     fName = Console.ReadLine();
                     quitRestart = fName;
                     restartcheck2 = Quitter(quitRestart);
@@ -54,7 +57,7 @@ namespace FortuneTeller
                 }
                 if (restartcheck2 == 0)
                 {
-                    Console.WriteLine("What is your last name");
+                    Console.WriteLine("And your last name?");
                     lName = Console.ReadLine();
                     quitRestart = lName;
                     restartcheck2 = Quitter(quitRestart);
@@ -88,7 +91,7 @@ namespace FortuneTeller
                         catch (Exception e)
 
                         {
-                            Console.WriteLine("That is not a valid number.");
+                            Console.WriteLine("Come on... I need a real number. /nHow old are you? Using numerals, please.");
                         }
                     }
                     while (iAge == -1);
@@ -96,7 +99,7 @@ namespace FortuneTeller
                 Console.Clear();
                 if (restartcheck2 == 0)
                 {
-                    Console.WriteLine("What month were you born?");
+                    Console.WriteLine("Great! So, what month were you born?");
                     bMonth = Console.ReadLine();
                     quitRestart = bMonth;
                     restartcheck2 = Quitter(quitRestart);
@@ -114,7 +117,7 @@ namespace FortuneTeller
                 {
                     do
                     {
-                        Console.WriteLine("What's your favorite ROYGBIV color? Type HELP if you don't know what this means.");
+                        Console.WriteLine("Got it. And what's your favorite ROYGBIV color? \nType HELP if you don't know what this means.");
                         fColor = Console.ReadLine();
                         fColor = fColor.ToUpper();
                         quitRestart = fColor;
@@ -124,7 +127,7 @@ namespace FortuneTeller
                         {
                             Console.WriteLine("ROYGBIV is an acronym for the colors of the rainbow.");
                             Console.WriteLine("Red, Orange, Yellow, Green, Blue, Indigo, and Violet, respectively.");
-                            Console.WriteLine("So, which is your favorite?");
+                            Console.WriteLine("So, I ask again, which is your favorite?");
                             fColor = Console.ReadLine();
                             fColor = fColor.ToUpper();
                             quitRestart = fColor;
@@ -145,7 +148,7 @@ namespace FortuneTeller
                     {
                         try
                         {
-                            Console.WriteLine("How many siblings do you have?");
+                            Console.WriteLine("Finally, how many siblings do you have?");
                             snumSibs = Console.ReadLine();
                             quitRestart = snumSibs;
                             restartcheck2 = Quitter(quitRestart);
@@ -158,7 +161,7 @@ namespace FortuneTeller
                         }
                         catch (Exception e2)
                         {
-                            Console.WriteLine("Please give a numerical response.");
+                            Console.WriteLine("Numbers please. How many siblings do you have?");
                         }
                     }
                 }
@@ -245,12 +248,14 @@ namespace FortuneTeller
                 {
                     retWith = 61531325;
                 }
+                Console.WriteLine("Wow. That was a lot of personal information. \nImagine what a dishonest computer program might do with all that... \nerr... onto your fortune!");
                 Console.WriteLine($"{fName} {lName} will retire in {retireAge} years, with ${retWith} in the bank,\na vacation home in {retireLoc} and a {fColor}.");
                 Console.WriteLine();
                 if (restartcheck2 == 0)
                 {
                     Console.WriteLine("Would you like a new fortune?(YES/NO)");
                     playAgain = Console.ReadLine();
+                    Console.Clear();
                 }
                 else
                 {
