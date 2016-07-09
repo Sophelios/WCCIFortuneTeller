@@ -88,7 +88,7 @@ namespace FortuneTeller
                             }
                             iAge = int.Parse(age);
                         }
-                        catch (Exception e)
+                        catch (Exception)
 
                         {
                             Console.WriteLine("Come on... I need a real number. /nHow old are you? Using numerals, please.");
@@ -115,9 +115,18 @@ namespace FortuneTeller
                 int z = -1;
                 if (restartcheck2 == 0)
                 {
+                    int repeatCheck = 0;
                     do
                     {
-                        Console.WriteLine("Got it. And what's your favorite ROYGBIV color? \nType HELP if you don't know what this means.");
+                        if (repeatCheck == 0)
+                        {
+                            Console.WriteLine("Got it. And what's your favorite ROYGBIV color? \nType HELP if you don't know what this means.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ok. Someone missed the point. You only have seven choices. \nRed, Orange, Yellow, Green, Blue, Indigo, or Violet\nEight, if you count (Help).");
+                        }
+                        
                         fColor = Console.ReadLine();
                         fColor = fColor.ToUpper();
                         quitRestart = fColor;
@@ -136,6 +145,10 @@ namespace FortuneTeller
                         }
                         //Catch non valid input??
                         z = colorCheck.IndexOf(fColor[0]);
+                        if (z < 0)
+                        {
+                            repeatCheck = 1;
+                        }
                     }
                     while (z < 0);
                 }
@@ -159,7 +172,7 @@ namespace FortuneTeller
                             numSibs = int.Parse(snumSibs);
                             Console.Clear();
                         }
-                        catch (Exception e2)
+                        catch (Exception)
                         {
                             Console.WriteLine("Numbers please. How many siblings do you have?");
                         }
